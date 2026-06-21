@@ -35,7 +35,7 @@ server.post("/", async (req, res) => {
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "mdent249@gmail.com",
+      to: "maxdent.citas@gmail.com",
       subject: "Nueva cita agendada",
       html: `
     <h2>Nueva cita</h2>
