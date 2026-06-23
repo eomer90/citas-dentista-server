@@ -1,4 +1,6 @@
-const transporter = require("../config/nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 const express = require("express");
 const server = express.Router();
 
@@ -33,8 +35,8 @@ server.post("/", async (req, res) => {
     const cita = new Cita(req.body);
     await cita.save();
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "maxdent.citas@gmail.com",
       subject: "Nueva cita agendada",
       html: `
